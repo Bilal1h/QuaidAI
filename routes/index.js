@@ -85,7 +85,7 @@ router.get("/logout",function(req,res){
   });
 });
 
-router.get("/profile/:user/:webtitle/:type", isLoggedIn, async function(req, res) {
+router.get("/profile/:user/:webtitle/:type",  async function(req, res) {
   const userloggedin = await userModel.findOne({
     username: req.params.user
   });
