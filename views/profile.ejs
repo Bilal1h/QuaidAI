@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AI</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.6.0/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+<body>
+<div class="w-full h-screen flex items-center justify-center flex-col">
+    <div class="hero min-h-screen" style="background-image: url(https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg);">
+        <div class="hero-overlay bg-opacity-60"></div>
+        <div class="hero-content text-center text-neutral-content flex">
+          <div class="max-w-md">
+            <h1 class="mb-5 text-5xl font-bold">Hello there <%=user.name%></h1>
+            <p class="mb-5"><%=user.bio%></p>
+            
+            <a href="/generate" class="btn btn-primary">Generate a website</a>
+            <a href="/logout" class="btn bg-red-600 text-white border-none hover:bg-red-700">Logout</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <h1 class="font-bold text-4xl w-full mt-4 mb-4 text-center">Your Websites</h1>
+    <div class="w-80 m-auto">
+      <%user.webs.forEach(function(e){%>
+      
+      <div class="card w-96 bg-base-100 shadow-xl bg-zinc-200 mb-10">
+      <div class="card-body">
+        <h2 class="card-title"><%= e.title || 'No Title' %></h2>
+          <div class="card-actions justify-start">
+          <a href="/profile/<%=e.username%>/<%=e.title%>/<%=e.style%>" class="btn btn-primary">Visit</a>
+          <a href="/edit/<%=e.title%>" class="btn btn-primary">Edit</a>
+          <a href="/delete/<%=e.title%>" class="btn bg-red-700 text-white">Delete</a>
+        </div>
+      </div>
+    </div>
+      
+      <% }) || "No Websites"%>
+   
+  </div>
+    </body>
+    </html>
